@@ -2,7 +2,8 @@
 <body style='font-size:30pt'>
 <script src="/bbs/js/jquery-1.8.0.min.js"></script>
 <script>
-function test(arg){
+function test(obj,arg){
+    obj.style.display='none';
 	var url = "delete.php?test="+arg;
 	document.getElementById('del').src=url;
 }
@@ -29,7 +30,8 @@ while($entry=$d->read()) {
 $d->close();
 sort($files);
 for($i=$start; $i< $start+$perPage; $i++){
-	echo "<img src=".$files[$i]." ondblclick=\"test('".$files[$i]."')\" border=1><br>\n";
+	//echo "<img src=".$files[$i]." ondblclick=\"test('".$files[$i]."')\" border=1><br>\n";
+	echo "<img src=".$files[$i]." ondblclick=\"test(this,'".$files[$i]."')\" border=1><br>\n";
 }
 
 echo "<a href=index.php?page=".($_GET['page']-1).">PREV</a>";
